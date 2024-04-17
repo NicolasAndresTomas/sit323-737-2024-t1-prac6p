@@ -24,11 +24,8 @@ The project uses Docker to containerize the Node.js application and Kubernetes t
 
 ## Deployment Steps
 
-### Set Up the Kubernetes Cluster
+### Ensure that your `kubectl` is configured to interact with your Kubernetes cluster:
 
-Ensure that your `kubectl` is configured to interact with your Kubernetes cluster:
-
-```bash
 gcloud container clusters get-credentials [CLUSTER_NAME] --region [CLUSTER_REGION]
 
 ## Creating the Docker Image
