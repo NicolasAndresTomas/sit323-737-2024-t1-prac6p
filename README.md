@@ -1,49 +1,32 @@
-Getting Started:
+# Node.js Microservice Deployment on Kubernetes
 
-Start the server by running the following command in your terminal, "node server.js"
+This repository contains the configuration files and code necessary to deploy a Node.js microservice on a Kubernetes cluster.
 
+## Overview
 
-API Endpoints:
+The project uses Docker to containerize the Node.js application and Kubernetes to orchestrate the deployment. The Kubernetes service is exposed through a LoadBalancer to allow external access.
 
-The Calculator Microservice offers several arithmetic operations. Use the following endpoints to perform calculations:
+## Prerequisites
 
-Addition (/add):
-- Description: Adds two numbers.
-- Usage: /add?num1=1&num2=2
-- Expected result: Result: 3
+- Git
+- Docker
+- Kubernetes cluster
+- kubectl configured to communicate with your Kubernetes cluster
+- Node.js and npm
 
-Subtraction (/subtract):
-- Description: Subtracts one number from another.
-- Usage: /subtract?num1=5&num2=2
-- Expected result: Result: 3
+## Repository Structure
 
-Multiplication (/multiply):
-- Description: Multiplies two numbers.
-- Usage: /multiply?num1=3&num2=4
-- Expected result: Result: 12
+- `deployment.yaml`: Kubernetes deployment configuration that defines the desired state of the application.
+- `service.yaml`: Kubernetes service configuration that exposes the application to the internet.
+- `Dockerfile`: Instructions for Docker to build the container image.
+- `/src`: Source code directory for the Node.js application.
+- `package.json`: Lists the Node.js application dependencies.
 
-Division (/divide):
-- Description: Divides one number by another.
-- Usage: /divide?num1=8&num2=2
-- Note: Division by zero will return an error.
-- Expected result: Result: 4
+## Deployment Steps
 
-Exponentiation (/power)
-- Description: Raises one number to the power of another.
-- Usage: /power?num1=2&num2=3
-- Expected Result: Result: 8
+### Set Up the Kubernetes Cluster
 
-Square Root (/sqrt)
-- Description: Calculates the square root of a number.
-- Usage: /sqrt?num1=16
-- Note: Negative numbers will return an error.
-- Expected Result: Result: 4
+Ensure that your `kubectl` is configured to interact with your Kubernetes cluster:
 
-Modulo (/modulo)
-- Description: Finds the remainder of division between two numbers.
-- Usage: /modulo?num1=10&num2=4
-- Expected Result: Result: 2
-
-Error Handling:
-
-Providing non-numeric inputs, attempting division by zero, or requesting the square root of a negative number will return an error message with a status of 400, guiding users towards valid inputs.
+```bash
+gcloud container clusters get-credentials [CLUSTER_NAME] --region [CLUSTER_REGION]
